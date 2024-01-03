@@ -19,14 +19,10 @@ func solution(_ N:Int, _ stages:[Int]) -> [Int] {
     }
     
     result.sort { 
-        if fails[$0-1] > fails[$1-1] {
-            return true
-        } else if fails[$0-1] == fails[$1-1] {
-            if $0 < $1 {
-                return true
-            }
-        } 
-        return false
+        if fails[$0-1] == fails[$1-1] {
+            return $0 < $1
+        }
+        return fails[$0-1] > fails[$1-1]
     }
 
     return result
