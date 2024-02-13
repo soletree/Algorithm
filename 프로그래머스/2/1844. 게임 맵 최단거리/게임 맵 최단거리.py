@@ -1,7 +1,5 @@
 from collections import *
 
-
-
 def bfs(maps):
     row = len(maps)
     col = len(maps[0])
