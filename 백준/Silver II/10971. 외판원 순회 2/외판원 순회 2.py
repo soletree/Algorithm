@@ -1,8 +1,8 @@
 def back(to, cost, cnt):
-    global ans, visited, n, costs, start
+    global ans, visited, n, costs
     
     if cnt == n:
-        if costs[to][start] == 0:
+        if costs[to][0] == 0:
             return
         ans = min(ans, cost+costs[to][start])
         return
@@ -27,9 +27,6 @@ visited = [False] * n
 ans = 1_000_000 * 10
 start = 0
 
-for i in range(n):
-    start = i
-    visited[start] = True
-    back(i, 0, 1)
-    
+visited[start] = True
+back(0, 0, 1)
 print(ans)
