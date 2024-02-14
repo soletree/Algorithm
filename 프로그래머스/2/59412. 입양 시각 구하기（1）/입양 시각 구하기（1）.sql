@@ -1,7 +1,7 @@
-SELECT 
-date_format(datetime, '%H') as hour,
-count(*)
-from animal_outs
-group by hour
-having hour between 9 and 19
-order by hour asc;
+SELECT
+    HOUR(DATETIME) AS HOUR,
+    COUNT(*) AS 'COUNT'
+FROM ANIMAL_OUTS
+WHERE DATE_FORMAT(DATETIME, '%H-%i') BETWEEN '08:59' AND '19:59'
+GROUP BY HOUR
+ORDER BY HOUR
