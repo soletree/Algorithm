@@ -1,0 +1,5 @@
+SELECT name, count(name) as name_count from animal_ins
+where name is not null 
+group by name
+having name_count >=2
+order by name asc;
