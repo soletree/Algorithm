@@ -35,13 +35,9 @@ n, m = map(int, input().split())
 board = [0] * 101
 visited = [False] * 101
 
-for _ in range(n):
+for _ in range(n+m):
     x, y = map(int, input().split())
     board[x] = y
-
-for _ in range(m):
-    u, v = map(int, input().split())
-    board[u] = v
 
 ans = int(1e9)
 solve()
