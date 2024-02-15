@@ -3,9 +3,9 @@ from collections import *
 input = sys.stdin.readline
 
 def solve():
-    global ans, dp
+    global ans, visited
     q = deque()
-    dp[1] = 0
+    visited[1] = True
     q.append((1,0))
     
     while q:
@@ -18,35 +18,31 @@ def solve():
                 break
 
             if next == 100:
-                dp[next] = min(dp[next], cnt+1)
+                ans = min(ans, cnt+1)
                 return
 
-            if dp[next] < cnt+1:
+            if visited[next]:
                 continue
 
-            if snakes[next] != 0:
-                next = snakes[next]
-            
-            if ladders[next] != 0:
-                next = ladders[next]
+            if board[next] != 0:
+                next = board[next]
 
-            dp[next] = min(dp[next], cnt+1)
+            visited[next] = True
             q.append((next, cnt+1))
             
 
 n, m = map(int, input().split())
-ladders = [0] * 101
-snakes = [0] * 101
-dp = [int(1e9)] * 101
+board = [0] * 101
+visited = [False] * 101
 
 for _ in range(n):
     x, y = map(int, input().split())
-    ladders[x] = y
+    board[x] = y
 
 for _ in range(m):
     u, v = map(int, input().split())
-    snakes[u] = v
+    board[u] = v
 
 ans = int(1e9)
 solve()
-print(dp[100])
+print(ans)
