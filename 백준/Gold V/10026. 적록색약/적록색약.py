@@ -1,5 +1,4 @@
 import sys
-import copy
 from collections import *
 input = sys.stdin.readline
 
@@ -32,7 +31,11 @@ def solve(x, y, color, board):
 
 n = int(input())
 board = [list(input().rstrip()) for _ in range(n)]
-rg_board = copy.deepcopy(board)
+rg_board = []
+
+for i in range(n):
+    rg_board.append(board[i][:])
+
 r = 0
 g = 0
 b = 0
