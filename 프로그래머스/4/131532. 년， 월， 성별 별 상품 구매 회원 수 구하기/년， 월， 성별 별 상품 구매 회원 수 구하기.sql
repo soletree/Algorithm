@@ -1,7 +1,3 @@
-# with sales as (
-#     select 
-# )
-
 SELECT 
 year(o.sales_date) as year,
 month(o.sales_date) as month,
