@@ -14,7 +14,7 @@ with joined as (
 select year(sales_date) as year,
 month(sales_date) as month,
 count(distinct user_id), 
-round(count(distinct user_id)/cnt, 1)
-from joined_sale, joined_cnt
+round(count(distinct user_id)/(select count(*) from joined), 1)
+from joined_sale
 group by 1, 2
 order by 1, 2 asc
